@@ -5,9 +5,7 @@
     box-sizing: 0;
 }
 body{
-
   background-color: #ACDD9333;
-  
 }
 main{
 
@@ -80,5 +78,5 @@ h1{
   text-align: center;
 }
 footer{
-  margin-top: 500px;
+  margin-top: 30px;
 }
