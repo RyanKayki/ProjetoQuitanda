@@ -1,0 +1,36 @@
+{% extends 'modelo.html' %}
+{% block conteudo %}
+
+
+
+<body>
+    <div class="container_acesso">
+        {% if msg %}
+    <h2 class="msgerro text-danger">{{ msg }}</h2>
+        {% endif %}
+
+            <form action="/acesso" method="post">
+                <h1>Acesso</h1><br><br>
+
+                <div class="form-floating mb-3">
+                    <input type="text" name="usuario" id="usuario" class="form-control" style="width: 98%;" placeholder=" " autofocus>
+                    <label for="txtEmail">E-mail</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                    <input type="password" name="senha" id="senha" class="form-control justify-content-center" style="width: 98%;"  placeholder=" ">
+                    <label for="txtSenha">Senha</label>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input type="checkbox" class="form-check-input" value="" id="chkLembrar">
+                    <label for="chkLembrar" class="form-check-label">Lembrar de mim</label>
+                </div>
+
+                <button type="submit" value="ACESSO" name="ACESSO"
+                    class="btn btn-lg btn-danger">Entrar</button>
+
+            </form>
+    </div>
+    {% endblock %}
+</body>
