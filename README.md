@@ -76,6 +76,8 @@ Contribuições são bem-vindas. Sinta-se à vontade para fazer um fork do repos
 
 ## Contato
 
+- [Ryan Kayki]: Autor do Projeto
+
 
 - [Rafael Ribas]: Instrutor de Programação Web Front-End.
 
