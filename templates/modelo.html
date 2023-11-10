@@ -32,6 +32,9 @@
                 <a class="nav-link text-white" aria-current="page" href="/login">LOGIN</a>
               </li>
               {% endif %}
+              <li class="nav-item fw-bold">
+                <a class="nav-link text-white" aria-current="page" href="/shop">SHOP</a>
+              </li>
             </ul>
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
@@ -41,6 +44,27 @@
         </div>
       </nav>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script>
+      (() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+    </script>
 </header>
 
         <main class="flex-fill py-5">
@@ -56,7 +80,7 @@
                 &copy; 2023 - Quitanda do Zé LTDA-ME<br>Rua Érico Pimentel Dias, 187, Itapeva/ SP <br>99.999.999/0001-99
               </div>
               <div class="col-12 col-md-4 text-center">
-                Política de Privacidade<br>Termos de uso<br>Trocas e Devoluções
+                Política de Privacidade<br>Termos de uso<br>Trocas e Devoluções<br><a href="/adm" class="text-decoration-none text-dark">Área Administrativa</a>
               <br>
               </div>
               <div class="col-12 col-md-4 text-center">

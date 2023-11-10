@@ -82,9 +82,9 @@ h1{
 }
 .container_acesso{
   background-color: gray;
-  width: 500px;
-  height: 500px;
-  margin-left: 700px;
+  width: 40%; 
+  height: 20%;
+  margin-left: 550px;
   padding: 100px;
   border-radius: 25px;
   box-shadow: 3px 6px 6px #000;

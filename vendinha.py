@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, session
 import sqlite3 as sql
+import uuid
 
 
 app = Flask(__name__)
@@ -17,7 +18,7 @@ def verifica_sessao():
     
 
 def conecta_database():
-    conexao = sql.connect("db_blog.db")
+    conexao = sql.connect("db_quitanda.db")
     conexao.row_factory = sql.Row
     return conexao
 
@@ -34,13 +35,12 @@ def iniciar_db():
 def index():
     iniciar_db()
     conexao = conecta_database()
-    posts = conexao.execute('SELECT * FROM posts ORDER BY id DESC').fetchall()
-    conexao.close()
+    produtos = conexao.execute('SELECT * FROM produtos ORDER BY id_prod DESC').fetchall()
     if verifica_sessao():    
         login = True
     else:
         login = False
-    return render_template("home.html", posts=posts,login=login)
+    return render_template("home.html", produtos=produtos,login=login)
 
 
 @app.route('/novopost')
@@ -50,20 +50,52 @@ def novopost():
     else:
         return render_template("login.html")
 
-@app.route('/cadpost', methods=['post'])
-def cadpost():
-    titulo = request.form['titulo']
-    conteudo = request.form['conteudo']
-    conexao = conecta_database()
-    conexao.execute('INSERT INTO posts (titulo,conteudo) VALUES (?,?)',(titulo,conteudo))
-    conexao.commit()
-    conexao.close()
-    return redirect('/')
+@app.route("/cadprodutos")
+def cadprodutos():
+    if verifica_sessao():
+        title = "Cadastro de produtos"
+        return render_template("cadastro.html",title=title)
+    else:
+        return redirect("/login")
 
+@app.route('/shop')
+def shop():
+    return render_template("shop.html")
+
+@app.route("/cadastro", methods=['post'])
+def cadastro():
+	if verifica_sessao():
+		nome_prod=request.form['nome_prod']
+		desc_prod=request.form['desc_prod']
+		preco_prod=request.form['preco_prod']
+		img_prod=request.files['img_prod ']
+		id_foto=str(uuid.uuid4().hex)
+		filename=id_foto+nome_prod+'.png'
+		img_prod.save("static/img/produtos/"+filename )
+		conexao = conecta_database()
+		conexao.execute('INSERT INTO produtos (nome_prod, desc_prod, preco_prod,img_prod) VALUES (?, ?, ?, ?)', (nome_prod, desc_prod, preco_prod, filename))
+		conexao.commit()
+		conexao.close()
+		return redirect("/adm")
+	else:
+		return redirect("/login")
+
+@app.route ("/adm")
+def adm():
+    if verifica_sessao():
+        iniciar_db()
+        conexao = conecta_database()
+        produtos = conexao.execute( 'SELECT * FROM produtos ORDER BY id_prod DESC').fetchall()
+        conexao.close()
+        title = "Administração"
+        return render_template("adm.html" , produtos=produtos , title=title)
+    else:
+        return redirect("/login")
+    
 @app.route('/excluir/<id>')
 def excluir(id):
     conexao = conecta_database()
-    conexao.execute('DELETE FROM posts WHERE id = ?',(id))
+    conexao.execute('DELETE FROM produtos WHERE id = ?',(id))
     conexao.commit()
     conexao.close()
     return redirect('/')
@@ -72,17 +104,18 @@ def excluir(id):
 def login():
     return render_template("login.html")
 
-@app.route('/acesso', methods=['POST'])
+@app.route("/acesso", methods=['post'])
 def acesso():
     global usuario, senha
     usuario_informado = request.form["usuario"]
-    senha_informado = request.form["senha"]
+    senha_informada = request.form["senha"]
+    if usuario == usuario_informado and senha == senha_informada:
 
-    if usuario == usuario_informado and senha == senha_informado:
         session["login"] = True
-        return redirect('/')
+        return redirect('/adm')
     else:
-        return render_template("login.html", msg="Usuario/Senha estão incorretos")
+        return render_template("login.html",msg="Usuário/Senha estão incorretos!")
+
 
 @app.route("/logout")
 def logout():
@@ -93,7 +126,7 @@ def logout():
 
 def excluir(id):
     conexao = conecta_database()
-    conexao.execute('DELETE FROM posts WHERE id = ?',(id))
+    conexao.execute('DELETE FROM produtos WHERE id = ?',(id))
     conexao.commit()
     conexao.close()
     return redirect('/')
@@ -103,9 +136,9 @@ def editar(id):
     if verifica_sessao():
         iniciar_db()
         conexao = conecta_database()
-        posts = conexao.execute('SELECT * FROM posts WHERE id = ?',(id,)).fetchall()
+        produtos = conexao.execute('SELECT * FROM produtos WHERE id = ?',(id,)).fetchall()
         conexao.close()
-        return render_template("editar.html", posts=posts)
+        return render_template("editar.html", produtos=produtos)
 
 @app.route("/editpost", methods=['POST'])
 def editpost():
@@ -113,7 +146,7 @@ def editpost():
     titulo = request.form['titulo']
     conteudo = request.form['conteudo']
     conexao = conecta_database()
-    conexao.execute('UPDATE posts SET titulo = ?, conteudo = ? WHERE id = ?',(titulo,conteudo,id))  
+    conexao.execute('UPDATE produtos SET titulo = ?, conteudo = ? WHERE id = ?',(titulo,conteudo,id))  
     conexao.commit()
     conexao.close()
     return redirect('/')

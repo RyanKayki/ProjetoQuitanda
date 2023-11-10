@@ -6,13 +6,13 @@
     <form action="/editpost" method="post" style="margin-left: 45%; margin-top: 10%;">
         <h2>Faça da sua Editação:</h2>
         <label>Titulo</label><br>
-        {% for post in posts %}
-        <input type="text" name="titulo" id="titulo" required value="{{ post['titulo'] }}"><br><br>
+        {% for produto in produtos %}
+        <input type="text" name="titulo" id="titulo" required value="{{ produto['titulo'] }}"><br><br>
 
         <label>Conteúdo do Post:</label><br>
-        <textarea name="conteudo" id="conteudo" cols="30" rows="5" required style="resize: none;">{{post ['conteudo'] }}</textarea>
+        <textarea name="conteudo" id="conteudo" cols="30" rows="5" required style="resize: none;">{{Produto ['conteudo'] }}</textarea>
         <br><br>
-        <input type="hidden" name="id" value="{{ post ['id'] }}">
+        <input type="hidden" name="id" value="{{ produto ['id'] }}">
         <input type="submit" value="SALVAR ALTERAÇÃO" name="Salvar">
     </form>
     {% endfor %}

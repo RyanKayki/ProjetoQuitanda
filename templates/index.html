@@ -5,22 +5,6 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="/static/CSS/style.css">
 
-<div id="postagem" style="margin-left: 25%;">
-    {% if not(posts) %}
-    <h2>Não há Produtos Disponiveis no momento, Retorne Mais Tarde!</h2>
-    {% else %}
-    {% for post in posts %}
-    <div class="boxpost">
-        {% if login %}
-        <a href="/editar/{{ post['id'] }}" class="editar">Editar</a>
-        <a href="/excluir/{{ post['id'] }}" class="excluir" style="margin-left: 95%; text-decoration: none; color: red;">X</a>
-        {% endif %}
-        <h2>{{ post['titulo'] }}</h2>
-        <p>{{ post['conteudo'] }}</p>
-    </div>
-        {% endfor %}
-        {% endif %}
-</div>
 {% endblock %}
 
     <title>Zé</title>
