@@ -1,7 +1,7 @@
 {% extends 'modelo.html' %}
 {% block conteudo %}
 {% if not produtos %}
-    <h1 class="text-center text-danger my-5">Não há Produtos Disponiveis no momento, Retorne Mais Tarde!</h1>
+    <h1 class="text-center text-danger my-5">Não hà produtos cadastrados</h1>
     {% else %}
         <div class="container text-center">
             <ul class="list-group mb-3 d-flex flex-row">
@@ -10,10 +10,10 @@
                         <div class="col-12 col-md-10 col-lg-6 mx-auto">
                             <li class="list-group-item py-1 d-flex aling-items-center" style="height: 220px;">
                                 <div class="col-3 me-3 mh-100">
-                                    <img scr="../static/img/produtos/{{ produto['img_prod'] }}" class="img-tumbnail mh-100"/>
+                                    <img src="../static/img/produtos/{{ produto['img_prod'] }}" class="img-tumbnail mh-100"/>
                                 </div>
-                                <div class="col-5">
-                                   <h4 class="text-danger">{{ produto['nome_prod'] }}"</h4>
+                                <div class="col-5 px-5">
+                                   <h4 class="text-danger">{{ produto['nome_prod'] }}</h4>
                                    <h5 class="texte-black">{{ produto['desc_prod'] }}</h5>
                                    <p class="text-danger fs-3">R$ {{ produto['preco_prod'] }}</p>
                                 </div>
@@ -33,3 +33,4 @@
                 </div>
             </div>
     {% endblock %}
+

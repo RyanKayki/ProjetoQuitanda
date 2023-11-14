@@ -43,13 +43,6 @@ def index():
     return render_template("home.html", produtos=produtos,login=login)
 
 
-@app.route('/novopost')
-def novopost():
-    if verifica_sessao():
-        return render_template("novopost.html")
-    else:
-        return render_template("login.html")
-
 @app.route("/cadprodutos")
 def cadprodutos():
     if verifica_sessao():
@@ -58,17 +51,17 @@ def cadprodutos():
     else:
         return redirect("/login")
 
-@app.route('/shop')
-def shop():
-    return render_template("shop.html")
+@app.route('/index')
+def indexx():
+    return render_template("index.html")
 
-@app.route("/cadastro", methods=['post'])
+@app.route("/cadastro",methods=["post"])
 def cadastro():
 	if verifica_sessao():
 		nome_prod=request.form['nome_prod']
 		desc_prod=request.form['desc_prod']
 		preco_prod=request.form['preco_prod']
-		img_prod=request.files['img_prod ']
+		img_prod=request.files['img_prod']
 		id_foto=str(uuid.uuid4().hex)
 		filename=id_foto+nome_prod+'.png'
 		img_prod.save("static/img/produtos/"+filename )
@@ -94,11 +87,15 @@ def adm():
     
 @app.route('/excluir/<id>')
 def excluir(id):
-    conexao = conecta_database()
-    conexao.execute('DELETE FROM produtos WHERE id = ?',(id))
-    conexao.commit()
-    conexao.close()
-    return redirect('/')
+    if verifica_sessao():
+        id = int(id)
+        conexao = conecta_database()
+        conexao.execute('DELETE FROM produtos WHERE id_prod = ?',(id,))
+        conexao.commit()
+        conexao.close()
+        return redirect('/adm')
+    else:
+        return redirect ("/login")
 
 @app.route('/login')
 def login():
@@ -116,7 +113,6 @@ def acesso():
     else:
         return render_template("login.html",msg="Usuário/Senha estão incorretos!")
 
-
 @app.route("/logout")
 def logout():
     global login
@@ -131,25 +127,33 @@ def excluir(id):
     conexao.close()
     return redirect('/')
 
-@app.route("/editar/<id>")
-def editar(id):
+@app.route("/editprodutos/<id_prod>")
+def editar(id_prod):
     if verifica_sessao():
         iniciar_db()
         conexao = conecta_database()
-        produtos = conexao.execute('SELECT * FROM produtos WHERE id = ?',(id,)).fetchall()
+        produtos = conexao.execute('SELECT * FROM produtos WHERE id_prod = ?',(id_prod,)).fetchall()
         conexao.close()
-        return render_template("editar.html", produtos=produtos)
+        title = "Edição De Produtos"
+        return render_template("editprodutos.html", produtos=produtos, title=title)
+    else:
+        return redirect ("/login")
 
-@app.route("/editpost", methods=['POST'])
+@app.route("/editarprodutos", methods=['POST'])
 def editpost():
-    id = request.form['id']
-    titulo = request.form['titulo']
-    conteudo = request.form['conteudo']
+    id_prod = request.form['id_prod']
+    nome_prod = request.form['nome_prod']
+    desc_prod = request.form['desc_prod']
+    preco_prod = request.form['preco_prod']
+    img_prod = request.files['img_prod']
+    id_foto=str(uuid.uuid4().hex)
+    filename =id_foto+nome_prod+'.png'
+    img_prod.save("/static/img/produto/"+filename)
     conexao = conecta_database()
-    conexao.execute('UPDATE produtos SET titulo = ?, conteudo = ? WHERE id = ?',(titulo,conteudo,id))  
+    conexao.execute('UPDATE produtos SET nome_prod = ?, desc_prod = ?, preco_prod = ?, img_prod = ? WHERE id_prod = ?',(nome_prod,desc_prod,preco_prod,filename,id_prod))  
     conexao.commit()
     conexao.close()
-    return redirect('/')
+    return redirect('/adm')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
