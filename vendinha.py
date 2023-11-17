@@ -148,7 +148,7 @@ def editpost():
     img_prod = request.files['img_prod']
     id_foto=str(uuid.uuid4().hex)
     filename =id_foto+nome_prod+'.png'
-    img_prod.save("/static/img/produto/"+filename)
+    img_prod.save("static/img/produto/"+filename)
     conexao = conecta_database()
     conexao.execute('UPDATE produtos SET nome_prod = ?, desc_prod = ?, preco_prod = ?, img_prod = ? WHERE id_prod = ?',(nome_prod,desc_prod,preco_prod,filename,id_prod))  
     conexao.commit()
