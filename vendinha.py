@@ -155,5 +155,13 @@ def editpost():
     conexao.close()
     return redirect('/adm')
 
+@app.route("/busca", methods=["post"])
+def busca():
+    busca = request.form['buscar']
+    conexao = conecta_database()
+    produtos = conexao.execute('SELECT * FROM produtos WHERE nome_prod LIKE "%" || ? || "%"',(busca,)).fetchall()
+    title = "Home"
+    return render_template("home.html", produtos=produtos, title=title)
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

@@ -3,12 +3,12 @@
 {% if not produtos %}
     <h1 class="text-center text-danger my-5">Não hà produtos cadastrados</h1>
     {% else %}
-        <div class="container text-center">
+        <div class="container text-center" style="width: 1050px; height: 380px; margin-top: 25px;">
             <ul class="list-group mb-3 d-flex flex-row">
                 <div class="row g-3">
                     {% for produto in produtos %}
                         <div class="col-12 col-md-10 col-lg-6 mx-auto">
-                            <li class="list-group-item py-1 d-flex aling-items-center" style="height: 220px;">
+                            <li class="list-group-item py-1 d-flex aling-items-center" style="height: 180px;">
                                 <div class="col-3 me-3 mh-100">
                                     <img src="../static/img/produtos/{{ produto['img_prod'] }}" class="img-tumbnail mh-100"/>
                                 </div>
