@@ -36,11 +36,12 @@ def index():
     iniciar_db()
     conexao = conecta_database()
     produtos = conexao.execute('SELECT * FROM produtos ORDER BY id_prod DESC').fetchall()
+    title = "Shop"
     if verifica_sessao():    
         login = True
     else:
         login = False
-    return render_template("home.html", produtos=produtos,login=login)
+    return render_template("home.html", produtos=produtos,login=login,title=title)
 
 
 @app.route("/cadprodutos")
@@ -99,7 +100,8 @@ def excluir(id):
 
 @app.route('/login')
 def login():
-    return render_template("login.html")
+    title = "Login"
+    return render_template("login.html",title=title)
 
 @app.route("/acesso", methods=['post'])
 def acesso():

@@ -53,5 +53,6 @@ main{
   text-align: center;
   }
 footer {
-  position: relative;
+  position: fixed;
+  bottom: 0;
 }
