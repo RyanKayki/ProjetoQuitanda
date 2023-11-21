@@ -54,7 +54,8 @@ def cadprodutos():
 
 @app.route('/index')
 def indexx():
-    return render_template("index.html")
+    title = "Sobre"
+    return render_template("index.html", title=title)
 
 @app.route("/cadastro",methods=["post"])
 def cadastro():

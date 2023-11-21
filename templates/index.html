@@ -1,130 +1,132 @@
 {% extends 'modelo.html' %}
 {% block conteudo %}
 
-<link rel="stylesheet" href="/static/CSS/style.css">
-    <!-- CARROSEL -->
-    <main style="margin-top: 100px; display: flex;">
-      <main class="carrosel position-absolute top-0 start-0">
-          <div id="carouselExampleIndicators" class="carousel slide p-5 w-50">
-              <div class="carousel-inner" style="width: 800px;">
-                <div class="carousel-item active">
-                  <img src="/static/IMG/1.jpeg" class="d-block w-100" alt="...">
+<div class="d-flex flex-column" style="min-height: 100vh;">
+  <link rel="stylesheet" href="/static/CSS/style.css">
+      <!-- CARROSEL -->
+      <main style="margin-top: 100px; display: flex;">
+        <main class="carrosel position-absolute top-0 start-0">
+            <div id="carouselExampleIndicators" class="carousel slide p-5 w-50">
+                <div class="carousel-inner" style="width: 800px;">
+                  <div class="carousel-item active">
+                    <img src="/static/IMG/1.jpeg" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="/static/IMG/2.jpeg" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="/static/IMG/3.jpeg" class="d-block w-100" alt="...">
+                  </div>
                 </div>
-                <div class="carousel-item">
-                  <img src="/static/IMG/2.jpeg" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                  <img src="/static/IMG/3.jpeg" class="d-block w-100" alt="...">
-                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
               </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
-      
-      <!-- Historia -->
-      <div class="text" style="width: 100%;height: 690px;padding: 30px; margin-top: 50px;">
-      
-          <h1>História da Quitanda do Zé</h1><br>
-      
-        <div class="line" style="border: solid 1px;"></div>
-        <br><p>A Quitanda do Zé tem suas raízes na simplicidade e no empreendedorismo de José Carlos Pereiras, um homem do interior paulista que decidiu compartilhar os sabores da terra com sua comunidade. A história da Quitanda do Zé é um exemplo de perseverança e crescimento gradual.</p>
-      
-      
-        <p>Tudo começou quando Zé, como é carinhosamente chamado, saiu pelas ruas com seu carrinho de mão carregado de frutas e verduras frescas. De porta em porta, ele oferecia seus produtos, conquistando a confiança de seus primeiros clientes. </p>
-      
-      
-        <p>Com o tempo, a demanda por suas mercadorias cresceu, e Zé tomou uma decisão audaciosa. Ele montou uma modesta barraca na feira municipal, onde a Quitanda do Zé logo se tornou uma parada obrigatória para os moradores em busca de alimentos frescos e saborosos. A qualidade dos produtos e o atendimento caloroso fizeram com que a Quitanda do Zé se destacasse.</p>
-      
-        <p>ㅤÀ medida que o tempo passava, Zé e sua equipe mantiveram-se fiéis a seus valores de  oferecer produtos de alta qualidade e um atendimento acolhedor. Isso atraiu cada vez mais clientes leais.</p>
-      </div>
-        </main>
-      <!-- ACCORDION -->
-      <div id="colhe" style="margin-left: 1100px; margin-top: 700px; display: grid;">
-        <main class="accordion position-absolute top-0 end-0">
-            <div class="accordion" id="accordionExample" style="margin-top: 600px; width: 65%; margin-right: 610px;">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button bg-success text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      <strong><em>Valores</em></strong>
-                    </button>
-                  </h2>
-                  <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <p>Valores</p>
-      
-                <p>A Quitanda do Zé se baseia em valores sólidos:</p>
-      
-                <p>
-                    Qualidade: Eles se esforçam para fornecer produtos da mais alta qualidade, cultivados localmente sempre que possível.
-                    Honestidade: A transparência e a integridade estão no centro de tudo o que fazem.
-                </p>
-      
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button bg-success collapsed text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      <strong><em>Missão</em></strong>
-                    </button>
-                  </h2>
-                  <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-      
-                <p>Missão</p>
-                <p>A missão da Quitanda do Zé é simples e clara: fornecer alimentos frescos, saudáveis e saborosos a preços acessíveis. Eles se comprometem a atender as necessidades de seus clientes com produtos de qualidade superior e a criar um ambiente acolhedor que celebre a comunidade local.</p>
-      
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button bg-success collapsed text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      <strong><em>Visão</em></strong>
-                    </button>
-                  </h2>
-                  <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <p>Visão</p>
-      
-                <p>A visão de Zé é continuar a crescer e a servir a comunidade. Ele sonha em expandir a Quitanda do Zé para outras regiões, compartilhando os sabores únicos de seu local de origem. Ele acredita que a paixão pela qualidade e o compromisso com o cliente são os pilares para um futuro brilhante.</p>
-                    </div>
-                  </div>
-                </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button bg-success collapsed text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
-                    <strong><em>Atendimento ao Cliente</em></strong>
-                  </button>
-                </h2>
-                <div id="collapsefour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                  <div class="accordion-body">
-                    <p>
-                      Comunidade: Eles são parte da comunidade e se dedicam a apoiá-la.
-                      Atendimento ao Cliente: Cada cliente é um amigo, e eles tratam todos com carinho e respeito.
-                      Sustentabilidade: Comprometem-se a adotar práticas sustentáveis em suas operações.
-                  </p>
-                  <p>Hoje, a Quitanda do Zé é uma parte essencial da vida da comunidade local. Zé e sua equipe continuam a trabalhar com paixão e dedicação, trazendo a essência do campo para a cidade.</p>
-      
-                  <p>
-                      A história da Quitanda do Zé é um lembrete de que, com trabalho árduo, amor pelo que se faz e valores sólidos, é possível transformar um carrinho de mão em uma instituição local, proporcionando qualidade de vida e sabor para todos.
-                  </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </main>
-      <div class="colheita" style="width: 90%;">
-        <img src="/static/IMG/colhe.png" style="padding-top: 20px; width: 90%;">
-      </div>
+  
+        <!-- Historia -->
+        <div class="text" style="width: 100%;height: 690px;padding: 30px; margin-top: 50px;">
+  
+            <h1>História da Quitanda do Zé</h1><br>
+  
+          <div class="line" style="border: solid 1px;"></div>
+          <br><p>A Quitanda do Zé tem suas raízes na simplicidade e no empreendedorismo de José Carlos Pereiras, um homem do interior paulista que decidiu compartilhar os sabores da terra com sua comunidade. A história da Quitanda do Zé é um exemplo de perseverança e crescimento gradual.</p>
+  
+  
+          <p>Tudo começou quando Zé, como é carinhosamente chamado, saiu pelas ruas com seu carrinho de mão carregado de frutas e verduras frescas. De porta em porta, ele oferecia seus produtos, conquistando a confiança de seus primeiros clientes. </p>
+  
+  
+          <p>Com o tempo, a demanda por suas mercadorias cresceu, e Zé tomou uma decisão audaciosa. Ele montou uma modesta barraca na feira municipal, onde a Quitanda do Zé logo se tornou uma parada obrigatória para os moradores em busca de alimentos frescos e saborosos. A qualidade dos produtos e o atendimento caloroso fizeram com que a Quitanda do Zé se destacasse.</p>
+  
+          <p>ㅤÀ medida que o tempo passava, Zé e sua equipe mantiveram-se fiéis a seus valores de  oferecer produtos de alta qualidade e um atendimento acolhedor. Isso atraiu cada vez mais clientes leais.</p>
         </div>
-    </main>
+          </main>
+        <!-- ACCORDION -->
+        <div id="colhe" style="margin-left: 1100px; margin-top: 700px; display: grid;">
+          <main class="accordion position-absolute top-0 end-0">
+              <div class="accordion" id="accordionExample" style="margin-top: 600px; width: 65%; margin-right: 610px;">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button bg-success text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <strong><em>Valores</em></strong>
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <p>Valores</p>
+  
+                  <p>A Quitanda do Zé se baseia em valores sólidos:</p>
+  
+                  <p>
+                      Qualidade: Eles se esforçam para fornecer produtos da mais alta qualidade, cultivados localmente sempre que possível.
+                      Honestidade: A transparência e a integridade estão no centro de tudo o que fazem.
+                  </p>
+  
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button bg-success collapsed text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <strong><em>Missão</em></strong>
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+  
+                  <p>Missão</p>
+                  <p>A missão da Quitanda do Zé é simples e clara: fornecer alimentos frescos, saudáveis e saborosos a preços acessíveis. Eles se comprometem a atender as necessidades de seus clientes com produtos de qualidade superior e a criar um ambiente acolhedor que celebre a comunidade local.</p>
+  
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button bg-success collapsed text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <strong><em>Visão</em></strong>
+                      </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <p>Visão</p>
+  
+                  <p>A visão de Zé é continuar a crescer e a servir a comunidade. Ele sonha em expandir a Quitanda do Zé para outras regiões, compartilhando os sabores únicos de seu local de origem. Ele acredita que a paixão pela qualidade e o compromisso com o cliente são os pilares para um futuro brilhante.</p>
+                      </div>
+                    </div>
+                  </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button bg-success collapsed text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                      <strong><em>Atendimento ao Cliente</em></strong>
+                    </button>
+                  </h2>
+                  <div id="collapsefour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>
+                        Comunidade: Eles são parte da comunidade e se dedicam a apoiá-la.
+                        Atendimento ao Cliente: Cada cliente é um amigo, e eles tratam todos com carinho e respeito.
+                        Sustentabilidade: Comprometem-se a adotar práticas sustentáveis em suas operações.
+                    </p>
+                    <p>Hoje, a Quitanda do Zé é uma parte essencial da vida da comunidade local. Zé e sua equipe continuam a trabalhar com paixão e dedicação, trazendo a essência do campo para a cidade.</p>
+  
+                    <p>
+                        A história da Quitanda do Zé é um lembrete de que, com trabalho árduo, amor pelo que se faz e valores sólidos, é possível transformar um carrinho de mão em uma instituição local, proporcionando qualidade de vida e sabor para todos.
+                    </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </main>
+        <div class="colheita" style="width: 90%;">
+          <img src="/static/IMG/colhe.png" style="padding-top: 20px; width: 90%;">
+        </div>
+          </div>
+      </main>
+</div>
   {% endblock %}
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
